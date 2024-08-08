@@ -14,7 +14,13 @@ def model_arima(df):
 
 def model_es(df):
     # Fit Exponential Smoothing model
-    model_holt = ExponentialSmoothing(df.iloc[:,-1], seasonal='add', seasonal_periods=7)
+    model_holt = ExponentialSmoothing(df['Jumlah_Penumpang'],
+                                  trend='add',  # options: 'add', 'mul', None
+                                  seasonal='add',  # options: 'add', 'mul', None
+                                  seasonal_periods=7,
+                                  damped_trend=True,  # Damped trend
+                                  initialization_method="estimated")
+
     model_holt_fit = model_holt.fit()
 
     return model_holt_fit
