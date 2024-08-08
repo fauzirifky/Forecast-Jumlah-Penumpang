@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from settings import *
+from model import *
 import pandas as pd
 from scipy.optimize import curve_fit
 import streamlit as st
@@ -9,6 +11,8 @@ import plotly.express as px
 import os
 from dotenv import load_dotenv
 load_dotenv()
+
+
 
 # Connect to the database
 # Accessing secrets
@@ -42,12 +46,21 @@ connection.close()
 
 
 # Streamlit App
+custom_css = css()
+st.markdown(custom_css, unsafe_allow_html=True)
+
 st.title('Passenger Data Visualization')
 
 # Display Data
 st.write(data)
 
+#Running model
+ma = model_arima(data)
+mes = model_es(data)
+# mfp = model_fbprophet(data)
+
 # Plotly Express Plot
-fig = px.line(data, x='Tanggal', y='Jumlah_Penumpang', title='Jumlah Penumpang Over Time')
+
+fig = px.line(data.iloc[:,:-10], x='Tanggal', y='Jumlah_Penumpang', title='Jumlah Penumpang Over Time')
 
 st.plotly_chart(fig)
