@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="956faa62-6155-47b3-9b51-2e3a912ddaab" name="Changes" comment="Upload files">
       <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dashboard_Forecast_Jumlah_Penumpang.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard_Forecast_Jumlah_Penumpang.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +71,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723078385566</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Upload files">
+      <option name="closed" value="true" />
+      <created>1723116719750</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723116719750</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
