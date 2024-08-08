@@ -64,6 +64,7 @@ mes_predict = mes.forecast(steps=10)
 
 # Plotly Express Plot
 
+st.markdown('# Multiple Forecast Results')
 fig = go.Figure()
 # Add the original data plot (excluding the last 10 entries)
 fig.add_trace(go.Scatter(x=data.iloc[-100:]['Tanggal'], y=data.iloc[-100:]['Jumlah_Penumpang'],
