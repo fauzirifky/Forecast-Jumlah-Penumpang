@@ -61,19 +61,25 @@ mes = model_es(data.iloc[:-10])
 # mfp = model_fbprophet(data)
 ma_predict = ma.forecast(steps=10)
 mes_predict = mes.forecast(steps=10)
-
+y = data['Jumlah_Penumpang'].values
+y = y.reshape(-1,1)
+mlstm = model_LSTM(y)
+yl = mlstm.reshape(1,-1)
+yl = yl[0]
 # Plotly Express Plot
 
 st.markdown('# Multiple Forecast Results')
 fig = go.Figure()
 # Add the original data plot (excluding the last 10 entries)
-fig.add_trace(go.Scatter(x=data.iloc[-100:]['Tanggal'], y=data.iloc[-100:]['Jumlah_Penumpang'],
+fig.add_trace(go.Scatter(x=data.iloc[-50:-10]['Tanggal'], y=data.iloc[-100:-10]['Jumlah_Penumpang'],
                          mode='lines', name='Actual Jumlah Penumpang'))
 # Add the predicted data plot (for the last 10 entries)
 fig.add_trace(go.Scatter(x=data.iloc[-10:]['Tanggal'], y=ma_predict,
                          mode='lines', name='Model ARIMA'))
 fig.add_trace(go.Scatter(x=data.iloc[-10:]['Tanggal'], y=mes_predict,
                          mode='lines', name='Model Exponential Smoothing'))
+fig.add_trace(go.Scatter(x=data.iloc[-10:]['Tanggal'], y=yl,
+                         mode='lines', name='Model LSTM'))
 fig.update_layout(
     title='Jumlah Penumpang Over Time',
     xaxis_title='Tanggal',
