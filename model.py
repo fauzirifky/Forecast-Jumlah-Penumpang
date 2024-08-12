@@ -1,6 +1,7 @@
 #load model
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
+import numpy as np
 # from fbprophet import Prophet
 import tensorflow as tf
 from sklearn.preprocessing import MinMaxScaler
@@ -60,11 +61,13 @@ def model_LSTM(df):
     model_lstm.compile(optimizer='adam', loss='mean_squared_error')
 
     # Train model
-    model_lstm.fit(X, y, epochs=20, batch_size=1, verbose=2)
+    model_lstm.fit(X[:-10], y[:-10], epochs=20, batch_size=1, verbose=2)
 
     # Prepare test data
-    test_input = scaled_data[-1, 0].reshape(-1, 1)
-    test_input = np.reshape(test_input, (test_input.shape[0], test_input.shape[1], 1))
+    # test_input = scaled_data[-1, 0].reshape(-1, 1)
+    # test_input = np.reshape(test_input, (test_input.shape[0], test_input.shape[1], 1))
 
-
-    return model_lstm
+    pred = model_lstm.predict(X[-10:])
+    predicted_original = scaler.inverse_transform(pred)
+    print(predicted_original)
+    return predicted_original
